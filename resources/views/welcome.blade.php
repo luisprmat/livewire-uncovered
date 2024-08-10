@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-    <div class="counter">
-        <span>0</span>
-
-        <button>+</button>
-    </div>
+    <livewire:counter />
 
     <script src="/app.js"></script>
 </body>
