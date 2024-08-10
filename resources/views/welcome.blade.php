@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-    <!-- Ready to start -->
+    <div class="counter">
+        <span>0</span>
+
+        <button>+</button>
+    </div>
 
     <script src="/app.js"></script>
 </body>

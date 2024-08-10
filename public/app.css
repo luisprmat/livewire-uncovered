@@ -365,3 +365,43 @@ Ensure the default browser behavior of the `hidden` attribute.
 [hidden] {
   display: none;
 }
+
+/*
+My components classes
+*/
+
+html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8rem;
+  /* background-color: azure; */
+}
+
+.counter span {
+  font-size: 6rem;
+}
+
+.counter {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 700;
+  padding-left: 4.5rem;
+  padding-right: 4.5rem;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-width: .5rem;
+  border-radius: 9999px;
+  justify-content: space-between;
+  align-items: center;
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.counter:before {
+  display: block;
+  content: '+';
+  opacity: 0;
+}
