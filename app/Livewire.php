@@ -12,15 +12,7 @@ class Livewire
     {
         $component = new $class;
 
-        $html = Blade::render(
-            $component->render(),
-            $this->getProperties($component)
-        );
-
-        $snapshot = [
-            'class' => get_class($component),
-            'data' => $this->getProperties($component),
-        ];
+        [$html, $snapshot] = $this->toSnapshot($component);
 
         $snapshotAttribute = htmlentities(json_encode($snapshot));
 
@@ -29,6 +21,40 @@ class Livewire
                 {$html}
            </div>
         HTML;
+    }
+
+    public function fromSnapshot($snapshot)
+    {
+        $class = $snapshot['class'];
+        $data = $snapshot['data'];
+
+        $component = new $class;
+
+        $this->setProperties($component, $data);
+
+        return $component;
+    }
+
+    public function toSnapshot($component)
+    {
+        $html = Blade::render(
+            $component->render(),
+            $properties = $this->getProperties($component)
+        );
+
+        $snapshot = [
+            'class' => get_class($component),
+            'data' => $properties,
+        ];
+
+        return [$html, $snapshot];
+    }
+
+    public function setProperties($component, $properties)
+    {
+        foreach ($properties as $key => $value) {
+            $component->{$key} = $value;
+        }
     }
 
     public function getProperties($component)
@@ -42,5 +68,10 @@ class Livewire
         }
 
         return $properties;
+    }
+
+    public function callMethod($component, $method)
+    {
+        $component->{$method}();
     }
 }
