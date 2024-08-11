@@ -8,8 +8,16 @@
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-    <livewire:counter />
+    {!! livewire(App\Livewire\Counter::class) !!}
 
     <script src="/app.js"></script>
 </body>
 </html>
+
+<?php
+
+function livewire($class) {
+    $component = new $class;
+
+    return $component->render();
+}
