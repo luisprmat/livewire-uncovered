@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-    {!! (new App\Livewire)->initialRender(App\Livewire\Counter::class) !!}
+    @livewire(App\Livewire\Counter::class)
 
     <script src="/app.js"></script>
 </body>
