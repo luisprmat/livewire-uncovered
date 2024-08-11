@@ -11,5 +11,16 @@
     @livewire(App\Livewire\Counter::class)
 
     <script src="/app.js"></script>
+
+    <script>
+        // wire all elements with wire:snapshot
+        document.querySelectorAll('[wire\\:snapshot]').forEach(el => {
+            let snapshot = JSON.parse(el.getAttribute('wire:snapshot'))
+            console.log(snapshot)
+        })
+        // go through each, pull of the string of data
+        // turn that string into an actual javascript object
+        // ...
+    </script>
 </body>
 </html>
