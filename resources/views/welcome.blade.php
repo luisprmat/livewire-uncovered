@@ -19,5 +19,20 @@
 function livewire($class) {
     $component = new $class;
 
-    return $component->render();
+    return Blade::render(
+        $component->render(),
+        getProperties($component)
+    );
+}
+
+function getProperties($component) {
+    $properties = [];
+
+    $reflectedProperties = (new ReflectionClass($component))->getProperties(ReflectionProperty::IS_PUBLIC);
+
+    foreach ($reflectedProperties as $property) {
+        $properties[$property->getName()] = $property->getValue($component);
+    }
+
+    return $properties;
 }
