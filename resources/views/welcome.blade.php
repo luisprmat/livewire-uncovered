@@ -13,14 +13,24 @@
     <script src="/app.js"></script>
 
     <script>
-        // wire all elements with wire:snapshot
         document.querySelectorAll('[wire\\:snapshot]').forEach(el => {
             let snapshot = JSON.parse(el.getAttribute('wire:snapshot'))
-            console.log(snapshot)
+
+            el.addEventListener('click', e => {
+                if(!e.target.hasAttribute('wire:click')) return
+
+                let method = e.target.getAttribute('wire:click')
+
+                fetch('/livewire', {
+                    method: 'POST',
+                    headers: { 'Content-Type' : 'application/json' },
+                    body: JSON.stringify({
+                        snapshot,
+                        callMethod: method,
+                    })
+                })
+            })
         })
-        // go through each, pull of the string of data
-        // turn that string into an actual javascript object
-        // ...
     </script>
 </body>
 </html>
