@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 class Todos
 {
-    public $draft = '';
+    public $draft = 'Alguna tarea ...';
 
     public $todos = ['Tarea 1', 'Tarea 2'];
 

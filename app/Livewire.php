@@ -74,4 +74,9 @@ class Livewire
     {
         $component->{$method}();
     }
+
+    public function updateProperty($component, $property, $value)
+    {
+        $component->{$property} = $value;
+    }
 }
